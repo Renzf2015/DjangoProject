@@ -22,9 +22,9 @@ SECRET_KEY = '^u*b#lt#(#tdboi-j8%^7v-r!hu8ea$=&r+h*3d+oup+29qepu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -83,6 +83,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+
 TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (STATIC_PATH,)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
