@@ -47,7 +47,7 @@ def add_category(request):
 
 def add_page(request, category_name_slug):
     try:
-        cat = Category.objects.get(category_name_slug)
+        cat = Category.objects.get(slug=category_name_slug)
     except Category.DoesNotExist:
         cat = None
 
@@ -66,4 +66,4 @@ def add_page(request, category_name_slug):
     else:
         form = PageForm()
 
-    return render(request, 'rango/add_page.html', {'form':form})
+    return render(request, 'rango/add_page.html', {'form':form, 'category_name_slug':category_name_slug})
