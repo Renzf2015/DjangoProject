@@ -17,9 +17,19 @@
             {% endfor %}
         </ul>
     {% else %}
-        <strong>There are no categories present.</strong>
+        <strong>目前没有目录.</strong>
+    {%  endif %}
+    <br />
+    {% if pages %}
+        <ul>
+            {% for page in pages %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {%  endfor %}
+        </ul>
+    {% else %}
+        <strong>目前没有页面.</strong>
     {%  endif %}
 
-    <a href="/rango/about/">About</a><br />
+    <a href="/rango/about/">关于</a><br />
 </body>
 </html>
