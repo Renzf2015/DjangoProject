@@ -36,7 +36,14 @@
 
     <a href="/rango/about/">关于</a><br />
     <a href="/rango/add_category/">添加新分类</a><br />
-    <a href="/rango/register/">注册新用户</a>
-    <a href="/rango/login/">登陆</a>
+
+    {% if user.is_authenticated %}
+        <a href="/rango/restricted/">登陆用户可见</a>
+        <a href="/rango/logout/">退出登陆</a>
+    {% else %}
+        <a href="/rango/register/">注册新用户</a>
+        <a href="/rango/login/">登陆</a>
+    {% endif %}
+
 </body>
 </html>
