@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>注册新用户</title>
-</head>
-<body>
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
     <h1>注册新用户</h1>
     {% if registered %}
         <p>欢迎注册新用户</p>
@@ -19,5 +17,4 @@
         <input type="submit" name="submit" value="Register" />
     </form>
     {% endif %}
-</body>
-</html>
+{% endblock %}
