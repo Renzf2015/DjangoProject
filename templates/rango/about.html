@@ -3,8 +3,12 @@
 {% load staticfiles %}
 
 {% block body_block %}
-    <h1>Rango says here is the about page!</h1>
-    <br />
-    <a href="{% url 'index' %}>Index</a>
-    <img src="{% static 'images/rango.jpg' %}" alt="Picture of rango." />
+    <div class="page-header">
+    <h1>关于页面!</h1>
+    </div>
+    <div>
+    <p></strong>.</p>
+    <img width="800" height="800" src="{% static 'images/rango.jpg' %}" alt="Picture of rango." />
+    </div>
+
 {% endblock %}
