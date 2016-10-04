@@ -2,7 +2,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from rango.models import Category, Page
@@ -47,9 +47,10 @@ def category(request, category_name_slug):
 
     try:
         category = Category.objects.get(slug = category_name_slug)
+        category.views += 1
         context_dict['category_name'] = category.name
 
-        pages = Page.objects.filter(category=category)
+        pages = Page.objects.filter(category=category).order_by('-views')
         context_dict['pages'] = pages
 
         context_dict['category'] = category
@@ -153,3 +154,12 @@ def restricted(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/rango/')
+
+def track_url(request):
+    if request.method == "GET":
+        page_id = request.GET['page_id']
+        page = Page.objects.get(id = page_id)
+        page.views += 1
+        page.save()
+        return redirect(page.url)
+    return render(request, 'rango/index.html')
