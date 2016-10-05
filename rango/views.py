@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
-from rango.models import Category, Page
+from rango.models import Category, Page, UserProfile
 
 import datetime
 
@@ -163,3 +163,8 @@ def track_url(request):
         page.save()
         return redirect(page.url)
     return render(request, 'rango/index.html')
+
+
+def profile(request, user_id):
+    user = UserProfile.objects.all()[0]
+    return render(request, 'rango/profile_registration.html', {'user': user})
